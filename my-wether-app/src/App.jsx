@@ -1002,59 +1002,59 @@ useEffect(() => {
                 </div>
               )}
               
-              {/* Forecast View */}
+             {/* Forecast View */}
               {activeTab === 'forecast' && (
-                <div className="space-y-6">
+                <div className="space-y-4 md:space-y-6">
                   {/* 5-Day Forecast */}
                   <div className={`rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
-                    <div className="p-6">
-                      <h2 className="text-xl font-bold mb-4">5-Day Forecast</h2>
+                    <div className="p-4 md:p-6">
+                      <h2 className="text-lg md:text-xl font-bold mb-3 md:mb-4">5-Day Forecast</h2>
                       <div className="space-y-2">
                         {forecastData.daily.map((day, idx) => (
                           <div 
                             key={idx}
-                            className={`flex items-center justify-between p-3 rounded-lg ${
+                            className={`flex flex-col sm:flex-row sm:items-center justify-between p-3 rounded-lg ${
                               idx === 0 
                                 ? (theme === 'dark' ? 'bg-blue-900/30 border border-blue-800/30' : 'bg-blue-50 border border-blue-100') 
                                 : (theme === 'dark' ? 'hover:bg-gray-700/50' : 'hover:bg-gray-50')
                             }`}
                           >
-                            <div className="flex items-center gap-4">
-                              <div className={`w-28 font-medium ${idx === 0 ? 'font-semibold' : ''}`}>
+                            <div className="flex items-center gap-3 mb-2 sm:mb-0 w-full sm:w-auto">
+                              <div className={`w-24 md:w-28 text-sm md:text-base font-medium ${idx === 0 ? 'font-semibold' : ''}`}>
                                 {day.day}
                                 {idx === 0 && (
-                                  <span className={`ml-2 text-xs px-2 py-0.5 rounded-full ${
+                                  <span className={`ml-1 md:ml-2 text-xs px-1.5 py-0.5 rounded-full ${
                                     theme === 'dark' ? 'bg-blue-900/50 text-blue-300' : 'bg-blue-100 text-blue-600'
                                   }`}>
                                     Today
                                   </span>
                                 )}
                               </div>
-                              <div className="flex items-center gap-2">
+                              <div className="flex items-center gap-1 md:gap-2 ml-auto sm:ml-0">
                                 {getWeatherIcon(day.condition, "small")}
-                                <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                                <span className={`text-xs md:text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
                                   {day.condition}
                                 </span>
                               </div>
                             </div>
                             
-                            <div className="flex items-center gap-6">
+                            <div className="flex items-center justify-between sm:justify-end gap-3 md:gap-6 w-full sm:w-auto">
                               <div className="flex items-center gap-1">
-                                <Droplets className={`h-4 w-4 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />
-                                <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                                <Droplets className={`h-3 w-3 md:h-4 md:w-4 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />
+                                <span className={`text-xs md:text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
                                   {day.precipitation}%
                                 </span>
                               </div>
                               
-                              <div className="flex items-center gap-4">
+                              <div className="flex items-center gap-2 md:gap-4">
                                 <div className="flex items-center gap-1">
-                                  <ArrowDown className={`h-4 w-4 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />
-                                  <span className="font-medium">{convertTemp(day.low)}°</span>
+                                  <ArrowDown className={`h-3 w-3 md:h-4 md:w-4 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />
+                                  <span className="text-sm md:text-base font-medium">{convertTemp(day.low)}°</span>
                                 </div>
-                                <div className="w-12 h-1 rounded-full bg-gray-200 dark:bg-gray-700"></div>
+                                <div className="w-8 md:w-12 h-1 rounded-full bg-gray-200 dark:bg-gray-700"></div>
                                 <div className="flex items-center gap-1">
-                                  <ArrowUp className={`h-4 w-4 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-500'}`} />
-                                  <span className="font-medium">{convertTemp(day.high)}°</span>
+                                  <ArrowUp className={`h-3 w-3 md:h-4 md:w-4 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-500'}`} />
+                                  <span className="text-sm md:text-base font-medium">{convertTemp(day.high)}°</span>
                                 </div>
                               </div>
                             </div>
@@ -1066,72 +1066,63 @@ useEffect(() => {
                   
                   {/* Daily details forecast */}
                   <div className={`rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
-                    <div className="p-6">
-                      <div className="flex items-center justify-between mb-4">
-                        <h3 className="text-lg font-bold">Today's Details</h3>
-                        <span className={`text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+                    <div className="p-4 md:p-6">
+                      <div className="flex flex-col sm:flex-row sm:items-center justify-between mb-3 md:mb-4 gap-2">
+                        <h3 className="text-base md:text-lg font-bold">Today's Details</h3>
+                        <span className={`text-xs md:text-sm ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
                           {new Date().toLocaleDateString(undefined, { weekday: 'long', month: 'long', day: 'numeric' })}
                         </span>
                       </div>
                       
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                          <div className={`flex items-center justify-between p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} mb-2`}>
+                      <div className="grid grid-cols-1 gap-3 md:gap-4">
+                        {[
+                          {
+                            icon: <Sun className={`h-4 w-4 md:h-5 md:w-5 ${theme === 'dark' ? 'text-amber-400' : 'text-amber-500'}`} />,
+                            label: "UV Index",
+                            value: `${getUVIndex().value} (${getUVIndex().level})`
+                          },
+                          {
+                            icon: <Wind className={`h-4 w-4 md:h-5 md:w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />,
+                            label: "Wind",
+                            value: `${Math.round(weatherData.wind.speed)} km/h (${getWindDirection(weatherData.wind.deg)})`
+                          },
+                          {
+                            icon: <Sunrise className={`h-4 w-4 md:h-5 md:w-5 ${theme === 'dark' ? 'text-amber-400' : 'text-amber-500'}`} />,
+                            label: "Sunrise",
+                            value: formatTime(weatherData.sys.sunrise)
+                          },
+                          {
+                            icon: <CloudRain className={`h-4 w-4 md:h-5 md:w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />,
+                            label: "Precipitation",
+                            value: getPrecipitationText(weatherData)
+                          },
+                          {
+                            icon: <Droplets className={`h-4 w-4 md:h-5 md:w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />,
+                            label: "Humidity",
+                            value: `${weatherData.main.humidity}%`
+                          },
+                          {
+                            icon: <Sunset className={`h-4 w-4 md:h-5 md:w-5 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-500'}`} />,
+                            label: "Sunset",
+                            value: formatTime(weatherData.sys.sunset)
+                          }
+                        ].map((item, index) => (
+                          <div 
+                            key={index}
+                            className={`flex items-center justify-between p-2 md:p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'}`}
+                          >
                             <div className="flex items-center gap-2">
-                              <Sun className={`h-5 w-5 ${theme === 'dark' ? 'text-amber-400' : 'text-amber-500'}`} />
-                              <span>UV Index</span>
+                              {item.icon}
+                              <span className="text-sm md:text-base">{item.label}</span>
                             </div>
-                            <span className="font-medium">{getUVIndex().value} ({getUVIndex().level})</span>
+                            <span className="text-sm md:text-base font-medium">{item.value}</span>
                           </div>
-                          
-                          <div className={`flex items-center justify-between p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} mb-2`}>
-                            <div className="flex items-center gap-2">
-                              <Wind className={`h-5 w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />
-                              <span>Wind</span>
-                            </div>
-                            <span className="font-medium">{Math.round(weatherData.wind.speed)} km/h ({getWindDirection(weatherData.wind.deg)})</span>
-                          </div>
-                          
-                          <div className={`flex items-center justify-between p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} mb-2`}>
-                            <div className="flex items-center gap-2">
-                              <Sunrise className={`h-5 w-5 ${theme === 'dark' ? 'text-amber-400' : 'text-amber-500'}`} />
-                              <span>Sunrise</span>
-                            </div>
-                            <span className="font-medium">{formatTime(weatherData.sys.sunrise)}</span>
-                          </div>
-                        </div>
-                        
-                        <div>
-                          <div className={`flex items-center justify-between p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} mb-2`}>
-                            <div className="flex items-center gap-2">
-                              <CloudRain className={`h-5 w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />
-                              <span>Precipitation</span>
-                            </div>
-                            <span className="font-medium">{getPrecipitationText(weatherData)}</span>
-                          </div>
-                          
-                          <div className={`flex items-center justify-between p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} mb-2`}>
-                            <div className="flex items-center gap-2">
-                              <Droplets className={`h-5 w-5 ${theme === 'dark' ? 'text-blue-400' : 'text-blue-500'}`} />
-                              <span>Humidity</span>
-                            </div>
-                            <span className="font-medium">{weatherData.main.humidity}%</span>
-                          </div>
-                          
-                          <div className={`flex items-center justify-between p-3 rounded-lg ${theme === 'dark' ? 'bg-gray-700' : 'bg-gray-50'} mb-2`}>
-                            <div className="flex items-center gap-2">
-                              <Sunset className={`h-5 w-5 ${theme === 'dark' ? 'text-orange-400' : 'text-orange-500'}`} />
-                              <span>Sunset</span>
-                            </div>
-                            <span className="font-medium">{formatTime(weatherData.sys.sunset)}</span>
-                          </div>
-                        </div>
+                        ))}
                       </div>
                     </div>
                   </div>
                 </div>
               )}
-              
               {/* Details View */}
               {activeTab === 'details' && (
                 <div className="space-y-6">
