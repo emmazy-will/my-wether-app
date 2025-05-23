@@ -24,6 +24,7 @@ import {
   CloudFog,
   Settings,
   Moon,
+  CheckCircle2,
   AlertCircle,
   Info
 } from 'lucide-react';
@@ -1308,43 +1309,52 @@ useEffect(() => {
                   </div>
                   
                   {/* Weather alerts */}
-                  <div className={`rounded-xl ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'}`}>
-                    <div className="p-6">
-                      <div className="flex items-center gap-3 mb-4">
-                        <AlertCircle className={`h-6 w-6 ${theme === 'dark' ? 'text-yellow-400' : 'text-yellow-500'}`} />
-                        <h2 className="text-xl font-bold">Weather Alerts</h2>
-                      </div>
-                      
-                      {['Rain', 'Snow', 'Thunderstorm'].includes(weatherData.weather[0].main) ? (
-                        <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-yellow-900/20 border border-yellow-800/30' : 'bg-yellow-50 border border-yellow-100'}`}>
-                          <div className="flex gap-3">
-                            <div>
-                              <h3 className="font-medium mb-1">Weather Advisory</h3>
-                              <p className={`text-sm ${theme === 'dark' ? 'text-yellow-300' : 'text-yellow-700'}`}>
-                                {weatherData.weather[0].main === 'Rain' 
-                                  ? 'Heavy rain expected in your area. Potential for localized flooding.'
-                                  : weatherData.weather[0].main === 'Snow'
-                                  ? 'Winter weather advisory in effect. Snow accumulation expected.'
-                                  : 'Thunderstorm warning. Seek shelter if outdoors.'}
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      ) : (
-                        <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-green-900/20 border border-green-800/30' : 'bg-green-50 border border-green-100'}`}>
-                          <div className="flex gap-3">
-                            <Info className={`h-5 w-5 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
-                            <div>
-                              <h3 className="font-medium mb-1">No Active Alerts</h3>
-                              <p className={`text-sm ${theme === 'dark' ? 'text-green-300' : 'text-green-700'}`}>
-                                There are no active weather alerts for your location.
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      )}
-                    </div>
-                  </div>
+                 <div className={`rounded-xl shadow-sm ${theme === 'dark' ? 'bg-gray-800' : 'bg-white'} border ${theme === 'dark' ? 'border-gray-700' : 'border-gray-200'} overflow-hidden`}>
+  <div className="p-5">
+    <div className="flex items-center gap-3 mb-5">
+      <div className={`p-2 rounded-full ${theme === 'dark' ? 'bg-yellow-900/30' : 'bg-yellow-100'}`}>
+        <AlertCircle className={`h-5 w-5 ${theme === 'dark' ? 'text-yellow-400' : 'text-yellow-500'}`} />
+      </div>
+      <h2 className="text-lg font-semibold">Weather Alerts</h2>
+    </div>
+    
+    {['Rain', 'Snow', 'Thunderstorm'].includes(weatherData.weather[0].main) ? (
+      <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-yellow-900/20 border border-yellow-800/30' : 'bg-yellow-50 border border-yellow-100'} flex gap-3 items-start`}>
+        <div className={`mt-0.5 p-1.5 rounded-full ${theme === 'dark' ? 'bg-yellow-800/50' : 'bg-yellow-100'}`}>
+          <AlertTriangle className={`h-4 w-4 ${theme === 'dark' ? 'text-yellow-400' : 'text-yellow-500'}`} />
+        </div>
+        <div>
+          <h3 className="font-medium text-base mb-1.5">Weather Advisory</h3>
+          <p className={`text-sm leading-relaxed ${theme === 'dark' ? 'text-yellow-300/90' : 'text-yellow-700'}`}>
+            {weatherData.weather[0].main === 'Rain' 
+              ? 'Heavy rain expected in your area. Potential for localized flooding.'
+              : weatherData.weather[0].main === 'Snow'
+              ? 'Winter weather advisory in effect. Snow accumulation expected.'
+              : 'Thunderstorm warning. Seek shelter if outdoors.'}
+          </p>
+        </div>
+      </div>
+    ) : (
+      <div className={`p-4 rounded-lg ${theme === 'dark' ? 'bg-green-900/20 border border-green-800/30' : 'bg-green-50 border border-green-100'} flex gap-3 items-start`}>
+        <div className={`mt-0.5 p-1.5 rounded-full ${theme === 'dark' ? 'bg-green-800/50' : 'bg-green-100'}`}>
+          <CheckCircle2 className={`h-4 w-4 ${theme === 'dark' ? 'text-green-400' : 'text-green-500'}`} />
+        </div>
+        <div>
+          <h3 className="font-medium text-base mb-1.5">No Active Alerts</h3>
+          <p className={`text-sm leading-relaxed ${theme === 'dark' ? 'text-green-300/90' : 'text-green-700'}`}>
+            There are no active weather alerts for your location.
+          </p>
+        </div>
+      </div>
+    )}
+    
+    <div className="mt-4 pt-4 border-t border-dashed border-gray-200 dark:border-gray-700">
+      <p className={`text-xs ${theme === 'dark' ? 'text-gray-400' : 'text-gray-500'}`}>
+        Last updated: {new Date().toLocaleTimeString()}
+      </p>
+    </div>
+  </div>
+</div>
                 </div>
               )}
             </>
